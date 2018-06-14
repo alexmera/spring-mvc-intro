@@ -1,10 +1,76 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>HOME SPRING MVC</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+
+  <title>Hello, world!</title>
 </head>
 <body>
-<h1 th:text="${helloMessage}"></h1>
+<div class="container">
+  <h2>Report a ticket</h2>
+  <form th:action="@{/report}" method="post">
+    <div class="form-group">
+      <label for="subject">Ticket subject</label>
+      <input type="text" class="form-control" name="subject" id="subject" aria-describedby="Subject"
+             placeholder="Ingrese el asunto del ticket">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  <br/>
+  <h1 th:text="${h1Message}">H1 Message</h1>
+  <!--<ul>-->
+    <!--<li th:each="ticket : ${tickets}">-->
+      <!--<pre><code th:text="${ticket}"></code></pre>-->
+    <!--</li>-->
+  <!--</ul>-->
+
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Asunto</th>
+      <th scope="col">Estado</th>
+      <th scope="col">Resolución</th>
+      <th scope="col">Fecha</th>
+      <th scope="col">Fecha</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="ticket : ${tickets}">
+      <th scope="row" th:text="${ticket.id}">1</th>
+      <td th:text="${ticket.subject}">Mark</td>
+      <td th:text="${ticket.status}">Otto</td>
+      <td th:text="${ticket.closedAs}">Otto</td>
+      <td th:text="${ticket.creationDate}">@mdo</td>
+      <td>
+        <a href="" th:href="@{/close/{id}(id=${ticket.id})}">
+        CERRAR
+      </a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 </body>
 </html>

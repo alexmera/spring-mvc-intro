@@ -14,7 +14,7 @@ import org.springframework.context.annotation.PropertySource;
 public class PersistenceConfig {
 
   @Bean(destroyMethod = "close")
-  public DB mapDb(@Value("database.path") String databasePath) {
+  public DB mapDb(@Value("${database.path}") String databasePath) {
     return DBMaker.fileDB(databasePath).make();
   }
 
